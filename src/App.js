@@ -1,12 +1,13 @@
-import Table from "./components/table/Table";
-
+import './App.css';
+import Route from './Route';
 
 function App() {
+
   return (
-    <div>
-    hello    
-     <Table />
-    </div>
+    <>
+    <Route />
+    </>
+ 
   );
 }
 
