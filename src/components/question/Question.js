@@ -5,10 +5,10 @@ const Question = () => {
   return (
     <Card>
   <div className='question-header'>
-    <div className="title">Awesome Quiz Application</div>
+    <div className="title">O'keji Quiz Application</div>
     <div className="timer">
       <div className="time_left_txt">Time Left</div>
-      <div className="timer_sec">15</div>
+      <div className="timer_sec">30</div>
     </div>
     <div className="time_line" />
   </div>
@@ -23,9 +23,11 @@ const Question = () => {
   {/* footer of Quiz Box */}
   <div className='question-footer'>
     <div className="total_que">
+        4 of 5
       {/* Here I've inserted Question Count Number from JavaScript */}
     </div>
-    <button className="next_btn">Next Que</button>
+    <button>Previous</button>
+    <button>Next</button>
   </div>
 
     </Card>

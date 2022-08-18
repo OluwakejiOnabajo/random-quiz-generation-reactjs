@@ -4,7 +4,7 @@ import Card from '../card/Card';
 const InfoPage = () => {
   return (
    <Card>
-  <div className="card-title"><span>Welcome to O'keji Quiz Game</span></div>
+  <div className="card-title"><span>Welcome to O'keji Quiz Application</span></div>
   <div className="card-body">
     <form className="info-form">
       <div className="form-group">

@@ -146,7 +146,7 @@
 
 .question-footer .total_que span{
     display: flex;
-    user-select: none;
+    /* user-select: none; */
 }
 
 .question-footer .total_que span p{
@@ -171,7 +171,7 @@
     background: #007bff;
     border: 1px solid #007bff;
     line-height: 10px;
-    opacity: 0;
+    /* opacity: 0; */
     pointer-events: none;
     transform: scale(0.95);
     transition: all 0.3s ease;
@@ -179,10 +179,4 @@
 
 .question-footer button:hover{
     background: #0263ca;
-}
-
-.question-footer button.show{
-    opacity: 1;
-    pointer-events: auto;
-    transform: scale(1);
 }
