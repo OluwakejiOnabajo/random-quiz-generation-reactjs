@@ -1,3 +1,16 @@
+# Project Detail
+
+### Title: Random Quiz Generator
+
+### SAIL Tech Talent Project 3
+
+### Description:
+A quiz generator web app that pops out random questions to the users with random options and do the marking when it’s correct
+
+### Preview
+This project have been deployed and can be viewed [here - randomprofile-generator](https://randomprofile-generator.herokuapp.com/).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -14,10 +14,10 @@ const Question = () => {
   </div>
   <div className='question'>
     <div className="que_text">
-      {/* Here I've inserted question from JavaScript */}
+    <span>What is</span>
     </div>
     <div className="option_list">
-      {/* Here I've inserted options from JavaScript */}
+    <div class="option"><span>lllll</span></div>
     </div>
   </div>
   {/* footer of Quiz Box */}

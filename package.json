@@ -1,5 +1,5 @@
 {
-  "name": "react_template",
+  "name": "random-quiz-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -12,6 +12,7 @@
     "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^9.0.8",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -40,5 +41,8 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
+  }, 
+  "engines": {
+    "node": "16.15.0"
   }
 }
