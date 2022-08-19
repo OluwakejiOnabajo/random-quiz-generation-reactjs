@@ -1,7 +1,19 @@
 import './Question.css';
 import Card from '../card/Card';
+import { useState } from 'react';
 
-const Question = () => {
+const Question = ({
+  username,
+  category,
+  score,
+  setScore,
+  highestScore,
+}) => {
+
+  console.log(category, username);
+
+  // const [questionIndex, setQuestionIndex] = useState(0);
+
   return (
     <Card>
   <div className='question-header'>
@@ -17,7 +29,7 @@ const Question = () => {
     <span>What is</span>
     </div>
     <div className="option_list">
-    <div class="option"><span>lllll</span></div>
+    <div className="option"><span>lllll</span></div>
     </div>
   </div>
   {/* footer of Quiz Box */}

@@ -52,9 +52,17 @@
     height: 60px;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding: 0 30px;
     border-top: 1px solid lightgrey;
+}
+
+.card .buttons .highest-score{
+   justify-content: flex-start;
+}
+
+.card .buttons .highest-score .score{
+    font-weight: 500;
 }
 
 .card .buttons button{

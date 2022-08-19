@@ -1,3 +1,4 @@
+import React from "react";
 import InfoPage from "./components/infoPage/InfoPage";
 import Rules from "./components/rules/Rules";
 import Question from "./components/question/Question";
@@ -17,19 +18,28 @@ const Home = () => {
     <>
     { infoPage ? (<InfoPage
     setInfoPage={setInfoPage}
-    setQuestionPage={setQuestionPage}
-    highestScore={setHighestScore}
+    setRulesPage={setRulesPage}
+    highestScore={highestScore}
     username={username}
-    setUsername={setUsername} 
+    setUsername={setUsername}
     category={category} 
     setCategory={setCategory} 
     />) : '' }
 
-    { rulesPage ? (<Rules />) : '' }
+    { rulesPage ? (<Rules
+    username={username}
+    category={category} 
+    highestScore={highestScore}
+    setInfoPage={setInfoPage}
+    setRulesPage={setRulesPage}
+    setQuestionPage={setQuestionPage}
+     />) : '' }
 
     { questionPage ? (<Question
     score={score}
     setScore={setScore}
+    highestScore={highestScore}
+    username={username}
     category={category} 
     setQuestionPage={setQuestionPage}
     setResultPage={setResultPage} 

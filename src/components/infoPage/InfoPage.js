@@ -1,26 +1,24 @@
 import './InfoPage.css';
 import Card from '../card/Card';
-import {useState } from 'react';
+// import { useEffect } from 'react';
+// import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Categories from '../../data/Categories';
 
 const InfoPage = ({
   setInfoPage,
-    setQuestionPage,
+    setRulesPage,
     highestScore,
     username,
     setUsername,
-    category, 
     setCategory, 
 }) => {
-
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
 
   const startQuiz = () => {
     if(username.length > 0){
       setInfoPage(false);
-      setQuestionPage(true);
+      setRulesPage(true);
     } else {
       toast.error("Oop's! Username is required", {
         theme: "colored",
@@ -35,19 +33,28 @@ const InfoPage = ({
   }
 }
 
-  const handleSubmit = (e) => {
-    console.log("ss3d");
-    // e.preventDefault();
-    if(username.length > 0){
-      setSubmitted(true);
-      setError(false);
-      console.log("ss3d");
-    } else {
-      console.log("ss");
-      // setError(true);
-      toast("Wow so easy!");
-    }
-  }
+//   useEffect(() => {
+
+//     // const getCat = async () => {
+//     //     try {
+//     //         const response = await fetch("https://the-trivia-api.com/api/categories");
+//     //         const cat = await response.json();
+//     //         console.log(cat);
+//     //         setCategory(await cat);
+//     //     } catch (error) {
+//     //         console.log("error", error);
+//     //     }
+//     // }
+//     // getCat();
+//     axios.get('https://the-trivia-api.com/api/categories')
+//     .then( (response) => {
+//       console.log(response.data);
+//       console.log(Array.isArray(Categories))
+//       // setCategory(response.data);
+//     }).catch((error) => {
+//       console.log(error);
+//     });
+// }, []);
 
 
   return (
@@ -62,14 +69,21 @@ const InfoPage = ({
       </div>
       <div className="form-group">
         <label>Select quiz category</label>
-        <select value={category} onChange={(e) => setCategory(e.target.value)} >
-          <option>General</option>
-          <option>Science</option>
+        <select onChange={(e) => setCategory(e.target.value)} >
+          <option > - Random Questions - </option>
+        {
+          Categories.map((cat, index) => {
+            return (
+              <option key={index} value={cat.value}>{cat.category}</option>
+            )
+          })
+        } 
         </select>
       </div>
     </form>
   </div>
   <div className="buttons">
+    <div className="highest-score">Highest Score: <span className='score'>{highestScore}</span></div>
     <button type="submit" onClick={ startQuiz } >Let's Play</button>
   </div>
 </Card>
