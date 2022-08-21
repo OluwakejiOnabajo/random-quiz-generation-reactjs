@@ -1,8 +1,8 @@
-import './Result.css';
+import './ResultPage.css';
 import Card from '../card/Card';
 import { FaCrown } from 'react-icons/fa';
 
-const Result = () => {
+const ResultPage = () => {
   return (
     <Card>
       <div className='result'>
@@ -23,4 +23,4 @@ const Result = () => {
   )
 }
 
-export default Result
+export default ResultPage

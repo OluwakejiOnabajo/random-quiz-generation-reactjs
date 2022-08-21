@@ -1,13 +1,13 @@
-import './Rules.css';
+import './RulesPage.css';
 import Card from '../card/Card';
 
-const Rules = ({
+const RulesPage = ({
   username,
   category,
   highestScore,
   setInfoPage,
   setRulesPage,
-  setQuestionPage
+  setQuizPage
 }) => {
   
   const exitQuiz = () => {
@@ -17,12 +17,12 @@ const Rules = ({
 
   const startQuiz = () => {
       setRulesPage(false);
-      setQuestionPage(true);
+      setQuizPage(true);
     }
 
   return (
     <Card>
-  <div className="card-title"><span>Hello {username}!<br />Some Rules of this Quiz</span></div>
+  <div className="card-title"><span>Hello <span className='username'>{username}!</span><br />Some Rules of this Quiz</span></div>
   <div className="card-body">
     <div className="rule">1. You will have only <span>30 seconds</span> for all question.</div>
     <div className="rule">2. You have the opportunity to change answers.</div>
@@ -39,4 +39,4 @@ const Rules = ({
   )
 }
 
-export default Rules
+export default RulesPage

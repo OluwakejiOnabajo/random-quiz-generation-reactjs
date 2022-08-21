@@ -1,7 +1,5 @@
 import './InfoPage.css';
 import Card from '../card/Card';
-// import { useEffect } from 'react';
-// import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Categories from '../../data/Categories';
@@ -12,11 +10,16 @@ const InfoPage = ({
     highestScore,
     username,
     setUsername,
+    category,
     setCategory, 
+    difficulty,
+    setDifficulty, 
+    fetchQuestions,
 }) => {
 
   const startQuiz = () => {
     if(username.length > 0){
+      fetchQuestions(category, difficulty);
       setInfoPage(false);
       setRulesPage(true);
     } else {
@@ -67,10 +70,11 @@ const InfoPage = ({
         <label>Enter your username</label>
         <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
       </div>
+
       <div className="form-group">
-        <label>Select quiz category</label>
+        <label>Quiz category</label>
         <select onChange={(e) => setCategory(e.target.value)} >
-          <option > - Random Questions - </option>
+          <option key='default' value='' > - Random Questions - </option>
         {
           Categories.map((cat, index) => {
             return (
@@ -78,6 +82,16 @@ const InfoPage = ({
             )
           })
         } 
+        </select>
+      </div>
+
+      <div className="form-group">
+        <label>Difficulty Level</label>
+        <select onChange={(e) => setDifficulty(e.target.value)} >
+          <option key='default' value=''> - Difficulty Level - </option>
+          <option key="easy" value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
         </select>
       </div>
     </form>
