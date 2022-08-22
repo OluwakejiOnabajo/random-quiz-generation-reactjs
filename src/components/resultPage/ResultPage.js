@@ -37,6 +37,9 @@ const ResultPage = ({
   }
 
   const handleQuit = () =>{
+    if(score > highestScore){
+      setHighestScore(score);
+    }
     setScore(0);
     setResultPage(false);
     setInfoPage(true);
