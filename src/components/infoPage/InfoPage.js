@@ -36,30 +36,6 @@ const InfoPage = ({
   }
 }
 
-//   useEffect(() => {
-
-//     // const getCat = async () => {
-//     //     try {
-//     //         const response = await fetch("https://the-trivia-api.com/api/categories");
-//     //         const cat = await response.json();
-//     //         console.log(cat);
-//     //         setCategory(await cat);
-//     //     } catch (error) {
-//     //         console.log("error", error);
-//     //     }
-//     // }
-//     // getCat();
-//     axios.get('https://the-trivia-api.com/api/categories')
-//     .then( (response) => {
-//       console.log(response.data);
-//       console.log(Array.isArray(Categories))
-//       // setCategory(response.data);
-//     }).catch((error) => {
-//       console.log(error);
-//     });
-// }, []);
-
-
   return (
     <>
    <Card>

@@ -9,14 +9,11 @@ import { FaSpinner } from 'react-icons/fa';
 // import { useState } from 'react';
 
 const QuizPage = ({
-  category,
   score,
   setScore,
-  highestScore,
-  difficulty,
   questions,
-  setQuestions,
   setQuizPage,
+  setInfoPage,
   setResultPage
 }) => {
 
@@ -35,7 +32,7 @@ useEffect(() => {
 }, [questions, currQues]);
 
 
-console.log("options", options);
+// console.log("options", options);
 
 const handleShuffle = (options) => {
   return options.sort(() => Math.random()-0.5);
@@ -50,7 +47,7 @@ const handleShuffle = (options) => {
     <div className="title">O'keji Quiz Application</div>
     <div className="timer">
       <div className="time_left_txt">Time Left</div>
-      <div className="timer_sec">30</div>
+      <div className="timer_sec">15</div>
     </div>
     <div className="time_line" />
   </div>
@@ -63,8 +60,8 @@ const handleShuffle = (options) => {
   correct={questions[currQues]?.correct_answer}
   score={score}
   setScore={setScore}
-  setQuestions={setQuestions}
   setQuizPage={setQuizPage}
+  setInfoPage={setInfoPage}
   setResultPage={setResultPage}
   />) :
    <FaSpinner className='spinner' />

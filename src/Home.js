@@ -19,7 +19,7 @@ const Home = () => {
   const [questions, setQuestions] = useState('');
 
   const fetchQuestions = async (category, difficulty) => {
-    const url = `https://opentdb.com/api.php?amount=10${category !== '' ? `&category=${category}` : ``}${ difficulty !== `` ? `difficulty=${difficulty}` : ''}&type=multiple`;
+    const url = `https://opentdb.com/api.php?amount=10${category !== '' ? `&category=${category}` : ``}${ difficulty !== `` ? `&difficulty=${difficulty}` : ''}&type=multiple`;
     await axios.get(url)
     .then( (response) => {
       // console.log(response.data.results);      
@@ -28,7 +28,7 @@ const Home = () => {
       console.log("error", error);
       console.log(url);
     }).finally(() => {
-      console.log("Questions loaded");
+      // console.log("url", url);
     })
   }
 
@@ -58,11 +58,9 @@ const Home = () => {
 
     { quizPage ? (<QuizPage
     score={score}
-    setScore={setScore}
-    category={category} 
-    difficulty={difficulty} 
+    setScore={setScore} 
     questions={questions}
-    setQuestions={setQuestions}
+    setInfoPage={setInfoPage}
     setQuizPage={setQuizPage}
     setResultPage={setResultPage} 
     />) : '' }
@@ -70,8 +68,8 @@ const Home = () => {
 { resultPage ? (<ResultPage
   username={username}
     score={score}
-    questions={questions}
     setScore={setScore}
+    questions={questions}
     highestScore={highestScore}
     setHighestScore={setHighestScore}
     setInfoPage={setInfoPage}

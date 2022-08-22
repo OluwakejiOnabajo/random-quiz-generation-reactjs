@@ -5,7 +5,7 @@
 ### SAIL Tech Talent Project 4
 
 ### Description:
-A quiz generator web app that pops out random questions to the users with random options and do the marking when it’s correct.
+A quiz generator web app that pops out random questions from API to the users with random options and do the marking when it’s correct.
 
 ### Preview
 This project have been deployed and can be viewed [here - okeji-quiz-app](https://okeji-quiz-app.herokuapp.com/).

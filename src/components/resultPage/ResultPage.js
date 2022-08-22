@@ -7,8 +7,9 @@ const ResultPage = ({
   username,
   questions,
    score, 
+   setScore,
    highestScore,
-    setHHighestScore,
+    setHighestScore,
     setInfoPage,
     setQuizPage,
    setResultPage
@@ -18,27 +19,25 @@ const ResultPage = ({
 
   useEffect(() => {
   if (score > 5){ 
-    // if user scored more than 3
-    //creating a new span tag and passing the user score number and total question number
     setScoreText(`and congrats! 🎉, You got ${score} out of ${questions.length}`);
 } else if(score > 3){ 
-  // if user scored more than 1
   setScoreText(`and nice 😎, You got ${score} out of ${questions.length}`);
  } else{ 
-  // if user scored less than 1
   setScoreText(`and sorry 😐, You got ${score} out of ${questions.length}`);
   }
   },[score, questions.length])
 
   const handleReplay = () =>{
     if(score > highestScore){
-      setHHighestScore(score);
+      setHighestScore(score);
     }
+    setScore(0);
     setResultPage(false);
     setQuizPage(true);
   }
 
   const handleQuit = () =>{
+    setScore(0);
     setResultPage(false);
     setInfoPage(true);
   }

@@ -5,40 +5,43 @@ import { useState } from 'react';
 
 const Question = ({
   currQues,
-  setCurrQue,
+  setCurrQues,
   questions,
   options,
   correct,
   score,
   setScore,
-  setQuestions,
   setQuizPage,
+  setInfoPage,
   setResultPage
 }) => {
 
   const [selected, setSelected] = useState("");
   
-  const handleSelect = (i) =>{
+  const handleSelect = (option) =>{
     
-    if(selected === i && selected === correct){
-      return "";
-    }else if(selected === i && selected !== correct){
+    if(selected === option && selected === correct){
+      return "correct";
+    }else if(selected === option && selected !== correct){
       return "incorrect";
-    }else if(i === correct){
+    }else if(option === correct){
       return "correct";
     }
   }
 
-  const handleCheck = (i) =>{
-    setSelected(i);
-    if(i === correct) setScore(score + 1);
+  const handleCheck = (option) =>{
+    // console.log("hee", option);
+    setSelected(option);
+    if(option === correct) setScore(score + 1);
     }
+    
+
     const handleNext = () => {
       if(currQues > 8){
         setQuizPage(false);
         setResultPage(true);
       }else if(selected){
-        setCurrQue(currQues + 1);
+        setCurrQues(currQues + 1);
         setSelected();
       }else{        
       toast.error("Please select an option", {
@@ -54,8 +57,10 @@ const Question = ({
       }
     }
 
-    const handleQuit = () => {
-      // if(currQues > 8)
+    const handleQuit = () => {     
+    setScore(0);
+    setQuizPage(false);
+    setInfoPage(true);
     }
 
   return (
@@ -71,16 +76,15 @@ const Question = ({
     {/* <span>Question</span> */}
     </div>
     <div className="option_list">
-      {options ? options.map((option, i) => <div key={i} className="option">{option}</div>) : null }
-        
-      {/* {options.map((i) => 
-       <div 
-       className={`option ${selected ? `handleSelect(i)` : `` }`} 
-       key={i} 
-       onClick={handleCheck(i)} 
-       disabled={selected} >
-        <span>{i}</span>{handleSelect(i)}</div>
-      )} */}
+      {options ? options.map((option, i) => 
+      <div 
+      key={i} 
+      onClick={() => handleCheck(option)} 
+      className={`option ${selected ? handleSelect(option) : `` } ${selected ? `disabled` : `` }`}
+      disabled={selected}>
+        <span>{option}</span>
+        </div>) : null }
+ 
     </div>
   </div>
   
