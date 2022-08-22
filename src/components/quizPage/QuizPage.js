@@ -1,8 +1,10 @@
 import './QuizPage.css';
 import Questions from '../questions/Questions';
 import Card from '../card/Card';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
-import { FaCheck, FaTimes, FaTruckLoading, FaSpinner } from 'react-icons/fa';
+import { FaSpinner } from 'react-icons/fa';
 
 // import { useState } from 'react';
 
@@ -12,15 +14,17 @@ const QuizPage = ({
   setScore,
   highestScore,
   difficulty,
-  questions
+  questions,
+  setQuestions,
+  setQuizPage,
+  setResultPage
 }) => {
 
   const [options, setOptions] = useState();
   const [currQues, setCurrQues] = useState(0);
-  
 
 useEffect(() => {
-  console.log(questions);
+  // console.log(questions);
 
   setOptions(
     questions ? handleShuffle([
@@ -30,26 +34,17 @@ useEffect(() => {
   );
 }, [questions, currQues]);
 
-// console.log(options);
+
+console.log("options", options);
 
 const handleShuffle = (options) => {
   return options.sort(() => Math.random()-0.5);
 };
 
-  const prevQuestion = () =>{
-
-  }
-
-  const nextQuestion = () =>{
-    
-  }
-
-console.log(category, difficulty);
-console.log(questions);
-
-  // const [questionIndex, setQuestionIndex] = useState(0);
-
+// console.log(category, difficulty);
+  
   return (
+    <>
     <Card>
   <div className='question-header'>
     <div className="title">O'keji Quiz Application</div>
@@ -61,19 +56,32 @@ console.log(questions);
   </div>
 
   { questions ? (<Questions 
+  currQues={currQues}
+  setCurrQues={setCurrQues}
+  questions={questions}
+  options={options}
+  correct={questions[currQues]?.correct_answer}
+  score={score}
+  setScore={setScore}
+  setQuestions={setQuestions}
+  setQuizPage={setQuizPage}
+  setResultPage={setResultPage}
   />) :
    <FaSpinner className='spinner' />
 }
-  {/* footer of Quiz Box */}
-  <div className='question-footer'>
-    <div className="total_que">
-    <span><p>3</p> of <p>20</p> Questions</span>
-    </div>
-    <button onClick={prevQuestion} >Previous</button>
-    <button onClick={nextQuestion} >Next</button>
-  </div>
-
     </Card>
+    <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
+</>
   )
 }
 

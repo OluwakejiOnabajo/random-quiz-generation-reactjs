@@ -15,6 +15,10 @@
     font-weight: 500;
 }
 
+.card .complete-text .username{
+    text-transform: capitalize;
+}
+
 .card .score-text span{
     display: flex;
     margin: 10px 0;
@@ -48,7 +52,6 @@
     padding: 0 20px;
     font-size: 18px;
     font-weight: 500;
-    cursor: pointer;
     color: #007bff;
     background: #fff;
 }

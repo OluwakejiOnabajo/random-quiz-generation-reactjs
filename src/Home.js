@@ -30,14 +30,6 @@ const Home = () => {
     }).finally(() => {
       console.log("Questions loaded");
     })
-    
-    // try {
-    //   const url = `https://opentdb.com/api.php?amount=10${category !== '' ? `&category=${category}` : ``}${ difficulty !== `` ? `difficulty=${difficulty}` : ''}&type=multiple`;
-    //   const { data } = await axios.get(url);
-    //   setQuestions(data.results); 
-    // } catch (error) {
-    //  console.log("error", error);
-    //   }
   }
 
 
@@ -70,14 +62,18 @@ const Home = () => {
     category={category} 
     difficulty={difficulty} 
     questions={questions}
+    setQuestions={setQuestions}
     setQuizPage={setQuizPage}
     setResultPage={setResultPage} 
     />) : '' }
 
 { resultPage ? (<ResultPage
+  username={username}
     score={score}
+    questions={questions}
     setScore={setScore}
-    highestScore={setHighestScore}
+    highestScore={highestScore}
+    setHighestScore={setHighestScore}
     setInfoPage={setInfoPage}
     setQuizPage={setQuizPage}
     setResultPage={setResultPage} 
