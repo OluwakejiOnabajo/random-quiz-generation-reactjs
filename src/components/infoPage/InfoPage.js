@@ -4,25 +4,28 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Categories from '../../data/Categories';
 
-const InfoPage = ({
-  setInfoPage,
-    setRulesPage,
-    highestScore,
-    username,
-    setUsername,
-    category,
-    setCategory, 
-    difficulty,
-    setDifficulty, 
-    fetchQuestions,
-}) => {
+const InfoPage = (props) => {
+  const {
+    setInfoPage,
+      setRulesPage,
+      highestScore,
+      username,
+      setUsername,
+      category,
+      setCategory, 
+      difficulty,
+      setDifficulty, 
+      fetchQuestions,
+  } = props;
 
+  // Start quiz
   const startQuiz = () => {
     if(username.length > 0){
       fetchQuestions(category, difficulty);
       setInfoPage(false);
       setRulesPage(true);
     } else {
+      // throw alert
       toast.error("Oop's! Username is required", {
         theme: "colored",
         position: "top-right",
@@ -77,6 +80,8 @@ const InfoPage = ({
     <button type="submit" onClick={ startQuiz } >Let's Play</button>
   </div>
 </Card>
+
+{/* Alert conatiner */}
 <ToastContainer
 position="top-right"
 autoClose={5000}

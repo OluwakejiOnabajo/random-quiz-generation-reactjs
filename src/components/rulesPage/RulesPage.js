@@ -1,14 +1,8 @@
 import './RulesPage.css';
 import Card from '../card/Card';
 
-const RulesPage = ({
-  username,
-  category,
-  highestScore,
-  setInfoPage,
-  setRulesPage,
-  setQuizPage
-}) => {
+const RulesPage = (props) => {
+  const { username, setInfoPage, setRulesPage, setQuizPage } = props;
   
   const exitQuiz = () => {
     setRulesPage(false);

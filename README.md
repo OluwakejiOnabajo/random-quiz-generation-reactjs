@@ -2,7 +2,7 @@
 
 ### Title: Random Quiz Generator
 
-### SAIL Tech Talent Project 4
+### SAIL Tech Talent Project 5
 
 ### Description:
 A quiz generator web app that pops out random questions from API to the users with random options and do the marking when it’s correct.

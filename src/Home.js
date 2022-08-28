@@ -18,23 +18,25 @@ const Home = () => {
   const [difficulty, setDifficulty] = useState('');
   const [questions, setQuestions] = useState('');
 
+  // Fetch quiz api
   const fetchQuestions = async (category, difficulty) => {
+    // concantenate category and difficulty level into api url
     const url = `https://opentdb.com/api.php?amount=10${category !== '' ? `&category=${category}` : ``}${ difficulty !== `` ? `&difficulty=${difficulty}` : ''}&type=multiple`;
     await axios.get(url)
     .then( (response) => {
       // console.log(response.data.results);      
     setQuestions(response.data.results); 
     }).catch((error) => {
-      console.log("error", error);
-      console.log(url);
+      // console.log("error", error);
+      // console.log(url);
     }).finally(() => {
       // console.log("url", url);
     })
   }
 
-
   return (
     <>
+    {/* Show Info page if true */}
     { infoPage ? (<InfoPage
     setInfoPage={setInfoPage}
     setRulesPage={setRulesPage}
@@ -48,9 +50,9 @@ const Home = () => {
     fetchQuestions={fetchQuestions}
     />) : '' }
 
+    {/* Show rules page if true */}
     { rulesPage ? (<RulesPage
     username={username}
-    highestScore={highestScore}
     setInfoPage={setInfoPage}
     setRulesPage={setRulesPage}
     setQuizPage={setQuizPage}
@@ -62,9 +64,10 @@ const Home = () => {
     questions={questions}
     setInfoPage={setInfoPage}
     setQuizPage={setQuizPage}
-    setResultPage={setResultPage} 
+    setResultPage={setResultPage}
     />) : '' }
 
+    {/* Show result page if true */}
 { resultPage ? (<ResultPage
   username={username}
     score={score}
@@ -76,6 +79,7 @@ const Home = () => {
     setQuizPage={setQuizPage}
     setResultPage={setResultPage} 
     />) : '' }
+
     </>
   )
 }

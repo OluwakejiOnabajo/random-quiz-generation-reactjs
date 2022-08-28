@@ -3,30 +3,38 @@ import Card from '../card/Card';
 import { useEffect, useState } from 'react';
 import { FaCrown } from 'react-icons/fa';
 
-const ResultPage = ({
-  username,
-  questions,
-   score, 
-   setScore,
-   highestScore,
-    setHighestScore,
-    setInfoPage,
-    setQuizPage,
-   setResultPage
-}) => {
+const ResultPage = (props) => {
+  
+  // Get props
+  const {
+    username,
+    questions,
+     score, 
+     setScore,
+     highestScore,
+      setHighestScore,
+      setInfoPage,
+      setQuizPage,
+     setResultPage
+  } = props;
 
   const [scoreText, setScoreText] = useState();
 
   useEffect(() => {
+
+    // if score is greater than 5, display message
   if (score > 5){ 
     setScoreText(`and congrats! 🎉, You got ${score} out of ${questions.length}`);
 } else if(score > 3){ 
+  // if score is greater than 3, display message
   setScoreText(`and nice 😎, You got ${score} out of ${questions.length}`);
  } else{ 
+  // if score is less than 3, display message
   setScoreText(`and sorry 😐, You got ${score} out of ${questions.length}`);
   }
   },[score, questions.length])
 
+  // Replay quiz
   const handleReplay = () =>{
     if(score > highestScore){
       setHighestScore(score);
@@ -36,6 +44,7 @@ const ResultPage = ({
     setQuizPage(true);
   }
 
+  // Quit quiz
   const handleQuit = () =>{
     if(score > highestScore){
       setHighestScore(score);
