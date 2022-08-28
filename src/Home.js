@@ -17,6 +17,11 @@ const Home = () => {
   const [category, setCategory] = useState('');
   const [difficulty, setDifficulty] = useState('');
   const [questions, setQuestions] = useState('');
+  const [timeText, setTimeText] = useState("Time Left");
+  const [timeCount, setTimeCount] = useState(15);
+  const [timeLine, setTimeLine] = useState(0);
+  let [counter, setCounter] = useState();
+  let [counterLine, setCounterLine] = useState();
 
   // Fetch quiz api
   const fetchQuestions = async (category, difficulty) => {
@@ -33,6 +38,43 @@ const Home = () => {
       // console.log("url", url);
     })
   }
+
+  
+  // Quiz Timer function
+ const startTimer = (time) => {
+   const timer = () => {
+       setTimeCount(time); //changing the value of timeCount with time value
+       time--; //decrement the time value
+      //  console.log(time);
+       if(time < 9){ //if timer is less than 9
+           setTimeCount("0" + time); //add a 0 before time value
+       }
+       if(time < 1){ //if timer is less than 0
+           clearInterval(counter); //clear counter
+           setTimeText("Time Off"); //change the time text to time off
+           const option = document.getElementsByClassName("option");
+          //  console.log(option.length);
+           for(let i=0; i < option.length; i++){
+            option[i].classList.add("disabled");
+        }
+          //  options.map((option, i) => options[i].classList.add("disabled") ) //once user select an option then disabled all options
+       }
+   }
+   counter = setInterval(timer, 1000);
+   setCounter(counter);
+  }
+
+  const startTimerLine = (time) =>{
+   const timer = ()=> {
+        time += 1; //upgrading time value with 1
+        setTimeLine(time + "px"); //increasing width of time_line with px by time value
+        if(time > 549){ //if time value is greater than 549
+            clearInterval(counterLine); //clear counterLine
+        }
+    }
+    counterLine = setInterval(timer, 29);
+    setCounterLine(counterLine);
+}
 
   return (
     <>
@@ -56,15 +98,29 @@ const Home = () => {
     setInfoPage={setInfoPage}
     setRulesPage={setRulesPage}
     setQuizPage={setQuizPage}
+    startTimer={startTimer}
+    startTimerLine={startTimerLine}
+    counter={counter}
+    counterLine={counterLine}
+    setTimeText={setTimeText}
      />) : '' }
 
+    {/* Show quiz page if true */}
     { quizPage ? (<QuizPage
     score={score}
     setScore={setScore} 
     questions={questions}
     setInfoPage={setInfoPage}
     setQuizPage={setQuizPage}
-    setResultPage={setResultPage}
+    setResultPage={setResultPage} 
+    startTimer={startTimer}
+    startTimerLine={startTimerLine}
+    counter={counter}
+    counterLine={counterLine}
+    timeCount={timeCount}
+    timeText={timeText}
+    setTimeText={setTimeText}
+    timeLine={timeLine}
     />) : '' }
 
     {/* Show result page if true */}
@@ -78,6 +134,11 @@ const Home = () => {
     setInfoPage={setInfoPage}
     setQuizPage={setQuizPage}
     setResultPage={setResultPage} 
+    startTimer={startTimer}
+    startTimerLine={startTimerLine}
+    setTimeText={setTimeText}
+    counter={counter}
+    counterLine={counterLine}
     />) : '' }
 
     </>

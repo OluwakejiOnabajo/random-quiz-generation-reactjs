@@ -15,7 +15,12 @@ const ResultPage = (props) => {
       setHighestScore,
       setInfoPage,
       setQuizPage,
-     setResultPage
+      setTimeText,
+     setResultPage,
+     startTimer,
+     startTimerLine,
+     counter, 
+     counterLine
   } = props;
 
   const [scoreText, setScoreText] = useState();
@@ -42,6 +47,11 @@ const ResultPage = (props) => {
     setScore(0);
     setResultPage(false);
     setQuizPage(true);
+    clearInterval(counter); //clear counter
+    clearInterval(counterLine); //clear counterLine
+    startTimer(15); //calling startTimer function
+    startTimerLine(0); //calling startTimerLine function
+    setTimeText("Time Left") //Reset time text
   }
 
   // Quit quiz

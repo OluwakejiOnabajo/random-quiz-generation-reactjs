@@ -1,21 +1,24 @@
 import './Questions.css';
 
-const Question = (props) => {
-  const {
-    currQues,
-    questions,
-    options,
-    score,
-    handleCheck,
-    selected,
-    handleSelect
-  } = props;
+const Question = ({
+  currQues,
+  questions,
+  options,
+  score,
+  handleSelect,
+  handleCheck,
+  selected
+}) => {
 
   return (
     <>
   <div className='question'>
     <div className='cat-score'>
+      
+      {/* Show current Question category */}
       <span>{questions[currQues].category}</span>
+
+      {/* Show Score */}
     <span>Score: {score}</span></div>
 
     <div className="que_text">
@@ -35,6 +38,14 @@ const Question = (props) => {
  
     </div>
   </div>
+{/*   
+  <div className='question-footer'>
+    <div className="total_que">
+    <span><p>{currQues + 1}</p> of <p>{questions.length}</p> Questions</span>
+    </div>
+    <button onClick={handleQuit} >Quit</button>
+    <button onClick={handleNext} >Next</button>
+  </div> */}
   </>
   )
 }

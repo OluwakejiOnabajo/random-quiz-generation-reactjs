@@ -2,16 +2,24 @@ import './RulesPage.css';
 import Card from '../card/Card';
 
 const RulesPage = (props) => {
-  const { username, setInfoPage, setRulesPage, setQuizPage } = props;
+  const { username, setInfoPage, setRulesPage, setQuizPage, startTimer, startTimerLine, counter, counterLine } = props;
   
   const exitQuiz = () => {
     setRulesPage(false);
     setInfoPage(true);
+    clearInterval(counter); //clear counter
+    clearInterval(counterLine); //clear counterLine
+    startTimer(15); //calling startTimer function
+    startTimerLine(0); //calling startTimerLine function
   }
 
   const startQuiz = () => {
       setRulesPage(false);
       setQuizPage(true);
+      clearInterval(counter); //clear counter
+      clearInterval(counterLine); //clear counterLine
+      startTimer(15); //calling startTimer function
+      startTimerLine(0); //calling startTimerLine function
     }
 
   return (
